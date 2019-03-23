@@ -26,14 +26,16 @@ public class PopupU {
         window.setGravity(Gravity.BOTTOM);
         window.setContentView(R.layout.layout_region);
         RegionPopupWindow regionPopupWindow = window.findViewById(R.id.regionPpw);
-
+        // 设置历史记录
         regionPopupWindow.setHistory(mType, province, city, area);
+        // 设置右上角叉号监听
         regionPopupWindow.setOnForkClickListener(new RegionPopupWindow.OnForkClickListener() {
             @Override
             public void onForkClick() {
                 dialog.dismiss();
             }
         });
+        // 设置item监听，回调传回结果
         regionPopupWindow.setOnRpwItemClickListener(new RegionPopupWindow.OnRpwItemClickListener() {
             @Override
             public void onRpwItemClick(String selectedProvince, String selectedCity, String selectedArea) {
