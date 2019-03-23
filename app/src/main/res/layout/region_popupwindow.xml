@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="所在地区"
+            android:textColor="@color/v333333"
+            android:textSize="14sp" />
+
+        <FrameLayout
+            android:id="@+id/flFork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:src="@mipmap/icon_black_fork" />
+
+        </FrameLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#eeeeee" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:id="@+id/tvProvince"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="19dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/ff5000" />
+
+        <View
+            android:id="@+id/bottomLineProvince"
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:visibility="gone"
+            android:layout_alignLeft="@+id/tvProvince"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/tvProvince"
+            android:background="@color/ff5000" />
+
+        <TextView
+            android:id="@+id/tvCity"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:layout_marginLeft="19dp"
+            android:layout_toRightOf="@+id/tvProvince"
+            android:text=""
+            android:textColor="@color/ff5000" />
+
+        <View
+            android:id="@+id/bottomLineCity"
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:visibility="gone"
+            android:layout_alignLeft="@+id/tvCity"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/tvCity"
+            android:background="@color/ff5000" />
+
+        <TextView
+            android:id="@+id/tvArea"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="19dp"
+            android:layout_toRightOf="@+id/tvCity"
+            android:text=""
+            android:textColor="@color/ff5000" />
+
+        <View
+            android:id="@+id/bottomLineArea"
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:visibility="gone"
+            android:layout_alignLeft="@+id/tvArea"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/tvArea"
+            android:background="@color/ff5000" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#eeeeee" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
