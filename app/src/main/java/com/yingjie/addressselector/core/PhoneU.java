@@ -1,4 +1,4 @@
-package com.yingjie.addressselector;
+package com.yingjie.addressselector.core;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

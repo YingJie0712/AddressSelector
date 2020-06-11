@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AddressSelector</string>
+    <string name="checked">√</string>
 </resources>

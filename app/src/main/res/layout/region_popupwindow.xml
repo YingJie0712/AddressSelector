@@ -23,14 +23,14 @@
             android:id="@+id/flFork"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp">
+            android:layout_marginEnd="10dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:padding="10dp"
                 android:src="@mipmap/icon_black_fork" />
 
         </FrameLayout>
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="19dp"
+            android:layout_marginStart="20dp"
             android:gravity="center"
             android:text=""
             android:textColor="@color/ff5000" />
@@ -60,9 +60,9 @@
             android:layout_width="wrap_content"
             android:layout_height="2dp"
             android:visibility="gone"
-            android:layout_alignLeft="@+id/tvProvince"
+            android:layout_alignStart="@+id/tvProvince"
             android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/tvProvince"
+            android:layout_alignEnd="@+id/tvProvince"
             android:background="@color/ff5000" />
 
         <TextView
@@ -71,8 +71,8 @@
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:layout_marginLeft="19dp"
-            android:layout_toRightOf="@+id/tvProvince"
+            android:layout_marginStart="19dp"
+            android:layout_toEndOf="@+id/tvProvince"
             android:text=""
             android:textColor="@color/ff5000" />
 
@@ -81,9 +81,9 @@
             android:layout_width="wrap_content"
             android:layout_height="2dp"
             android:visibility="gone"
-            android:layout_alignLeft="@+id/tvCity"
+            android:layout_alignStart="@+id/tvCity"
             android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/tvCity"
+            android:layout_alignEnd="@+id/tvCity"
             android:background="@color/ff5000" />
 
         <TextView
@@ -92,8 +92,8 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="19dp"
-            android:layout_toRightOf="@+id/tvCity"
+            android:layout_marginStart="19dp"
+            android:layout_toEndOf="@+id/tvCity"
             android:text=""
             android:textColor="@color/ff5000" />
 
@@ -102,9 +102,9 @@
             android:layout_width="wrap_content"
             android:layout_height="2dp"
             android:visibility="gone"
-            android:layout_alignLeft="@+id/tvArea"
+            android:layout_alignStart="@+id/tvArea"
             android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/tvArea"
+            android:layout_alignEnd="@+id/tvArea"
             android:background="@color/ff5000" />
     </RelativeLayout>
 

@@ -1,4 +1,4 @@
-package com.yingjie.addressselector;
+package com.yingjie.addressselector.core;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.yingjie.addressselector.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,6 +82,7 @@ public class RegionAdapter extends RecyclerView.Adapter<RegionAdapter.ViewHolder
         } else if (dataType == DATA_CITY) {
             isCheckedC.clear();
             if (provinceDatas == null ||
+                    positionProvince == -1 ||
                     provinceDatas.get(positionProvince) == null ||
                     provinceDatas.get(positionProvince).citys == null) {
                 return;
@@ -93,6 +96,8 @@ public class RegionAdapter extends RecyclerView.Adapter<RegionAdapter.ViewHolder
         } else if (dataType == DATA_AREA){
             isCheckedA.clear();
             if (provinceDatas == null ||
+                    positionProvince == -1 ||
+                    positionCity == -1 ||
                     provinceDatas.get(positionProvince) == null ||
                     provinceDatas.get(positionProvince).citys == null ||
                     provinceDatas.get(positionProvince).citys.get(positionCity) == null ||
@@ -109,48 +114,51 @@ public class RegionAdapter extends RecyclerView.Adapter<RegionAdapter.ViewHolder
         notifyDataSetChanged();
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View inflate = LayoutInflater.from(mContext).inflate(R.layout.item_region_recycleview, viewGroup, false);
-        ViewHolder holder = new ViewHolder(inflate);
-        return holder;
+        return new ViewHolder(inflate);
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         List<Boolean> isChecked = new ArrayList<>();
 
         // 显示数据，把当前position设置为tag
         if (dataType == DATA_PROVINCE) {
             isChecked = isCheckedP;
             if (provinceDatas == null ||
-                    provinceDatas.get(position) == null) {
+                    provinceDatas.get(holder.getAdapterPosition()) == null) {
                 return;
             }
-            holder.tvName.setText(provinceDatas.get(position).provinceName);
+            holder.tvName.setText(provinceDatas.get(holder.getAdapterPosition()).provinceName);
         } else if (dataType == DATA_CITY) {
             isChecked = isCheckedC;
             if (provinceDatas == null ||
+                    positionProvince == -1 ||
                     provinceDatas.get(positionProvince) == null ||
                     provinceDatas.get(positionProvince).citys == null ||
-                    provinceDatas.get(positionProvince).citys.get(position) == null) {
+                    provinceDatas.get(positionProvince).citys.get(holder.getAdapterPosition()) == null) {
                 return;
             }
-            holder.tvName.setText(provinceDatas.get(positionProvince).citys.get(position).cityName);
+            holder.tvName.setText(provinceDatas.get(positionProvince).citys.get(holder.getAdapterPosition()).cityName);
         } else {
             isChecked = isCheckedA;
             if (provinceDatas == null ||
+                    positionProvince == -1 ||
+                    positionCity == -1 ||
                     provinceDatas.get(positionProvince) == null ||
                     provinceDatas.get(positionProvince).citys == null ||
                     provinceDatas.get(positionProvince).citys.get(positionCity) == null ||
                     provinceDatas.get(positionProvince).citys.get(positionCity).areas == null ||
-                    provinceDatas.get(positionProvince).citys.get(positionCity).areas.get(position) == null) {
+                    provinceDatas.get(positionProvince).citys.get(positionCity).areas.get(holder.getAdapterPosition()) == null) {
                 return;
             }
-            holder.tvName.setText(provinceDatas.get(positionProvince).citys.get(positionCity).areas.get(position).areaName);
+            holder.tvName.setText(provinceDatas.get(positionProvince).citys.get(positionCity).areas.get(holder.getAdapterPosition()).areaName);
         }
         // 根据选中状态更新UI
-        if (isChecked.get(position)) {
+        if (isChecked.get(holder.getAdapterPosition())) {
             holder.tvName.setTextColor(mContext.getResources().getColor(R.color.ff5000));
             holder.tvSelected.setVisibility(View.VISIBLE);
         } else {
@@ -167,7 +175,7 @@ public class RegionAdapter extends RecyclerView.Adapter<RegionAdapter.ViewHolder
                         finalIsChecked.set(i, false);
                     }
                     // 2、当前点击的设置为true
-                    finalIsChecked.set(position, true);
+                    finalIsChecked.set(holder.getAdapterPosition(), true);
                     // 3、更新
                     notifyDataSetChanged();
 
@@ -194,12 +202,15 @@ public class RegionAdapter extends RecyclerView.Adapter<RegionAdapter.ViewHolder
             }
         } else if (dataType == DATA_CITY) {
             if (provinceDatas != null &&
+                    positionProvince != -1 &&
                     provinceDatas.get(positionProvince) != null &&
                     provinceDatas.get(positionProvince).citys != null) {
                 size = provinceDatas.get(positionProvince).citys.size();
             }
         } else { // dataType == DATA_AREA 选择县/区前和后都展示同样的数据
             if (provinceDatas != null &&
+                    positionProvince != -1 &&
+                    positionCity != -1 &&
                     provinceDatas.get(positionProvince) != null &&
                     provinceDatas.get(positionProvince).citys != null &&
                     provinceDatas.get(positionProvince).citys.get(positionCity) != null &&

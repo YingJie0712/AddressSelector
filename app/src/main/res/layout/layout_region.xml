@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.yingjie.addressselector.RegionPopupWindow
+    <com.yingjie.addressselector.core.RegionPopupWindow
         android:id="@+id/regionPpw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

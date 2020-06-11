@@ -1,10 +1,13 @@
-package com.yingjie.addressselector;
+package com.yingjie.addressselector.core;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.yingjie.addressselector.R;
+import com.yingjie.addressselector.api.OnSelectorListener;
 
 /**
  * Created by chen.yingjie on 2019/3/23
@@ -20,7 +23,7 @@ public class PopupU {
      * @param area
      * @return
      */
-    public static Dialog showRegionView(Context context, int mType, final String province, final String city, final String area, final OnRegionListener onRegionListener) {
+    public static Dialog showRegionView(Context context, int mType, final String province, final String city, final String area, final OnSelectorListener onSelectorListener) {
         final Dialog dialog = new Dialog(context, R.style.DialogCommonStyle);
         Window window = dialog.getWindow();
         window.setGravity(Gravity.BOTTOM);
@@ -39,7 +42,7 @@ public class PopupU {
         regionPopupWindow.setOnRpwItemClickListener(new RegionPopupWindow.OnRpwItemClickListener() {
             @Override
             public void onRpwItemClick(String selectedProvince, String selectedCity, String selectedArea) {
-                onRegionListener.onRegionListener(selectedProvince, selectedCity, selectedArea);
+                onSelectorListener.onSelector(selectedProvince, selectedCity, selectedArea);
                 dialog.dismiss();
             }
         });
@@ -53,9 +56,5 @@ public class PopupU {
         window.setWindowAnimations(R.style.AnimBottom);
         dialog.show();
         return dialog;
-    }
-
-    public interface OnRegionListener {
-        void onRegionListener(String province, String city, String area);
     }
 }

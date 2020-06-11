@@ -1,4 +1,4 @@
-package com.yingjie.addressselector;
+package com.yingjie.addressselector.core;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.yingjie.addressselector.R;
+import com.yingjie.addressselector.api.AdType;
 
 import java.util.List;
 
@@ -69,7 +72,7 @@ public class RegionPopupWindow extends LinearLayout {
     private void initView() {
         provinceDatas = GsonU.getJsonData(getContext());
 
-        if (mType == Config.TYPE_EDIT) {// 编辑模式
+        if (mType == AdType.EDIT) {// 编辑模式
             // 省显示黑色选定值，底线隐藏
             tvProvince.setTextColor(getContext().getResources().getColor(R.color.v333333));
             tvProvince.setText(checkProvince);
@@ -88,7 +91,7 @@ public class RegionPopupWindow extends LinearLayout {
             // 定位到已选项
             int targetPosition = regionAdapter.getAreaPosition(checkProvince, checkCity, checkArea);
             scrollToPosition(targetPosition);
-        } else if (mType == Config.TYPE_ADD) {// 添加模式
+        } else if (mType == AdType.ADD) {// 添加模式
             //  第一次进来，没有选择地址。
             if (TextUtils.isEmpty(checkProvince) && TextUtils.isEmpty(checkCity) && TextUtils.isEmpty(checkArea)) {
                 // 初始状态

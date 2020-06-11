@@ -1,4 +1,4 @@
-package com.yingjie.addressselector;
+package com.yingjie.addressselector.core;
 
 import android.content.Context;
 
@@ -6,8 +6,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-
-import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
